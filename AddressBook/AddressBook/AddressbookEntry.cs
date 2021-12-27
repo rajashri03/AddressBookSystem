@@ -105,19 +105,35 @@ namespace AddressBook
             string city = Console.ReadLine();
             Console.WriteLine("Enter state");
             string state = Console.ReadLine();
-            add.Add(new Contacts()
-            {
-                City = city,
-                State = state
-            });
             var lists = add.FindAll(x =>( x.City == city && x.State==state));
-
-            Console.WriteLine($"****************Peoples In {city}********************");
+            Console.WriteLine($"****************Peoples In {city} and {state}********************");
             foreach (Contacts conn in lists)
             {
                 Console.WriteLine("First Name:" + conn.Firstname);
                 Console.WriteLine("-----------------------------------------------------------");
             }
+        }
+        /// <summary>
+        /// Method to get number of contact persons i.e count by city and state
+        /// </summary>
+        public void Countperson()
+        {
+            Console.WriteLine("********Count Person-City and state wise*******");
+            Console.WriteLine("Enter City");
+            string city = Console.ReadLine();
+            Console.WriteLine("Enter state");
+            string state = Console.ReadLine();
+            var lists = add.FindAll(x => (x.City == city && x.State == state));
+            var set = new List<Contacts>();
+            foreach (Contacts listdata in lists)
+            {
+                    set.Add(listdata);
+               
+            }
+            var result = set.Count;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Total Persons in {city} & {state}:"+result);
+            Console.ResetColor();
         }
     }
 }

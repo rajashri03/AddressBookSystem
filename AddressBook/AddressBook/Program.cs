@@ -4,7 +4,7 @@ bool status = true;
 AddressbookEntry add = new AddressbookEntry();
 while (status)
 {
-    Console.WriteLine("Select:\n1)Add New Entry\n2)Search");
+    Console.WriteLine("Select:\n1)Add New Entry\n2)Search\n3)Count");
     int op = Convert.ToInt16(Console.ReadLine());
     switch (op)
     {
@@ -16,6 +16,11 @@ while (status)
             add.Show();
             add.UniqueContact();
             add.SearchByCityState();
+            break;
+        case 3:
+            add.Show();
+            add.UniqueContact();
+            add.Countperson();
             break;
     }
 }
