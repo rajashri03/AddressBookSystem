@@ -94,5 +94,30 @@ namespace AddressBook
                 }
             }
         }
+
+        /// <summary>
+        /// Method to search entry from address book -City and state wise
+        /// </summary>
+        public void SearchByCityState()
+        {
+            Console.WriteLine("********Search*******");
+            Console.WriteLine("Enter City");
+            string city = Console.ReadLine();
+            Console.WriteLine("Enter state");
+            string state = Console.ReadLine();
+            add.Add(new Contacts()
+            {
+                City = city,
+                State = state
+            });
+            var lists = add.FindAll(x =>( x.City == city && x.State==state));
+
+            Console.WriteLine($"****************Peoples In {city}********************");
+            foreach (Contacts conn in lists)
+            {
+                Console.WriteLine("First Name:" + conn.Firstname);
+                Console.WriteLine("-----------------------------------------------------------");
+            }
+        }
     }
 }
