@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AddressBook
 {
     public class AddressbookEntry
     {
-        List<Contacts> add = new List<Contacts>();
+        public static List<Contacts> add = new List<Contacts>();
         /// <summary>
         /// Method to add Contacts in address book
         /// </summary>
@@ -134,6 +135,28 @@ namespace AddressBook
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Total Persons in {city} & {state}:"+result);
             Console.ResetColor();
+        }
+        public static void WriteData()
+        {
+            const string FilePath = @"D:\Bridgelab\AddressBookSystem\AddressBook\AddressBook\File.txt";
+           
+            // Create a file to write to.
+            using (StreamWriter sw = File.CreateText(FilePath))
+            {
+                foreach (var con in add)
+                {
+                    Console.WriteLine("Added record in file");
+                    sw.WriteLine("****************Peoples In address book********************");
+                    sw.WriteLine("First Name:" + con.Firstname);
+                    sw.WriteLine("Last Name:" + con.Lastname);
+                    sw.WriteLine("Address:" + con.Address);
+                    sw.WriteLine("City:" + con.City);
+                    sw.WriteLine("State:" + con.State);
+                    sw.WriteLine("Zipcode:" + con.Zipcode);
+                    sw.WriteLine("Pincode:" + con.Pincode);
+                    sw.WriteLine("-----------------------------------------------------------");
+                }
+            }
         }
     }
 }
