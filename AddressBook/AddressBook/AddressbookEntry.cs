@@ -196,6 +196,7 @@ namespace AddressBook
                     var Record = sw.GetRecords<Contacts>();
                     foreach (var data in Record)
                     {
+                        Console.WriteLine("*********Addressbook**********");
                         Console.WriteLine(data.Firstname);
                         Console.WriteLine(data.Lastname);
                         Console.WriteLine(data.Address);
@@ -203,6 +204,7 @@ namespace AddressBook
                         Console.WriteLine(data.State);
                         Console.WriteLine(data.Zipcode);
                         Console.WriteLine(data.Pincode);
+                        Console.WriteLine("\n");
                     }
                 }
             }
