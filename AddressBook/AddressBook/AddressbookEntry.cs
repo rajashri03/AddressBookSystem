@@ -160,9 +160,12 @@ namespace AddressBook
                 }
             }
         }
-        public static void WriteDataUsingCSV(bool append=true)
+        /// <summary>
+        /// Write Contact in CSV Files
+        /// </summary>
+        /// <param name="append"></param>
+        public static void WriteDataUsingCSV()
         {
-            List<string> newLines = new List<string>();
             try
             {
                 string Filepath = @"D:\Bridgelab\AddressBookSystem\AddressBook\AddressBook\Contacts.csv";
@@ -175,6 +178,35 @@ namespace AddressBook
                 }
             }
             catch(FileNotFoundException f)
+            {
+                new Exception(f.FileName);
+            }
+        }
+        /// <summary>
+        /// Read Contact usng CSVReader
+        /// </summary>
+        public static void ReadDataUsingCSV()
+        {
+            try
+            {
+                string Filepath = @"D:\Bridgelab\AddressBookSystem\AddressBook\AddressBook\Contacts.csv";
+
+                using (CsvReader sw = new CsvReader(new StreamReader(Filepath), CultureInfo.InvariantCulture))
+                {
+                    var Record = sw.GetRecords<Contacts>();
+                    foreach (var data in Record)
+                    {
+                        Console.WriteLine(data.Firstname);
+                        Console.WriteLine(data.Lastname);
+                        Console.WriteLine(data.Address);
+                        Console.WriteLine(data.City);
+                        Console.WriteLine(data.State);
+                        Console.WriteLine(data.Zipcode);
+                        Console.WriteLine(data.Pincode);
+                    }
+                }
+            }
+            catch (FileNotFoundException f)
             {
                 new Exception(f.FileName);
             }

@@ -27,7 +27,8 @@ while (status)
             AddressbookEntry.WriteData();
             break;
         case 5:
-            AddressbookEntry.WriteDataUsingCSV(true);
+            AddressbookEntry.WriteDataUsingCSV();
+            AddressbookEntry.ReadDataUsingCSV();
             break;
     }
 }
