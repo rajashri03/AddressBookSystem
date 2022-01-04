@@ -5,7 +5,7 @@ bool status = true;
 AddressbookEntry add = new AddressbookEntry();
 while (status)
 {
-    Console.WriteLine("Select:\n1)Add New Entry\n2)Search\n3)Count\n4)Read and Write file");
+    Console.WriteLine("Select:\n1)Add New Entry\n2)Search\n3)Count\n4)Read and Write file\n5)Write using csv");
     int op = Convert.ToInt16(Console.ReadLine());
     switch (op)
     {
@@ -25,6 +25,9 @@ while (status)
             break;
         case 4:
             AddressbookEntry.WriteData();
+            break;
+        case 5:
+            AddressbookEntry.WriteDataUsingCSV(true);
             break;
     }
 }

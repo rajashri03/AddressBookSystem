@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using CsvHelper;
+using System.Globalization;
 
 namespace AddressBook
 {
@@ -156,6 +158,25 @@ namespace AddressBook
                     sw.WriteLine("Pincode:" + con.Pincode);
                     sw.WriteLine("-----------------------------------------------------------");
                 }
+            }
+        }
+        public static void WriteDataUsingCSV(bool append=true)
+        {
+            List<string> newLines = new List<string>();
+            try
+            {
+                string Filepath = @"D:\Bridgelab\AddressBookSystem\AddressBook\AddressBook\Contacts.csv";
+
+                using (CsvWriter sw = new CsvWriter(new StreamWriter(Filepath), CultureInfo.InvariantCulture))
+                {
+                    sw.WriteHeader<Contacts>();
+                        sw.WriteRecords("\n");
+                        sw.WriteRecords(add);
+                }
+            }
+            catch(FileNotFoundException f)
+            {
+                new Exception(f.FileName);
             }
         }
     }

@@ -9,6 +9,7 @@ namespace AddressBook
     /// <summary>
     /// Encapsulation(POCO Model)
     /// </summary>
+    [Serializable]
     public class Contacts
     {
         public string Firstname { get; set; }
