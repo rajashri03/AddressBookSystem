@@ -5,7 +5,7 @@ bool status = true;
 AddressbookEntry add = new AddressbookEntry();
 while (status)
 {
-    Console.WriteLine("Select:\n1)Add New Entry\n2)Search\n3)Count\n4)Read and Write file\n5)Write using csv");
+    Console.WriteLine("Select:\n1)Add New Entry\n2)Search\n3)Count\n4)Read and Write file\n5)Write using csv\n6)Write using Json");
     int op = Convert.ToInt16(Console.ReadLine());
     switch (op)
     {
@@ -27,8 +27,14 @@ while (status)
             AddressbookEntry.WriteData();
             break;
         case 5:
-            AddressbookEntry.WriteDataUsingCSV();
-            AddressbookEntry.ReadDataUsingCSV();
+            string Filepath = @"D:\Bridgelab\AddressBookSystem\AddressBook\AddressBook\Contacts.csv";
+            AddressbookEntry.WriteDataUsingCSV(Filepath);
+            AddressbookEntry.ReadDataUsingCSV(Filepath);
+            break;
+        case 6:
+            string fileName = @"D:\Bridgelab\AddressBookSystem\AddressBook\AddressBook\Contacts.json";
+            AddressbookEntry.WriteDataUsingJSON(fileName);
+            AddressbookEntry.ReadJson(fileName);
             break;
     }
 }

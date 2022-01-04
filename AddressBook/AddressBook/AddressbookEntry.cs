@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 using CsvHelper;
 using System.Globalization;
+using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace AddressBook
 {
@@ -164,12 +166,10 @@ namespace AddressBook
         /// Write Contact in CSV Files
         /// </summary>
         /// <param name="append"></param>
-        public static void WriteDataUsingCSV()
+        public static void WriteDataUsingCSV(string Filepath)
         {
             try
             {
-                string Filepath = @"D:\Bridgelab\AddressBookSystem\AddressBook\AddressBook\Contacts.csv";
-
                 using (CsvWriter sw = new CsvWriter(new StreamWriter(Filepath), CultureInfo.InvariantCulture))
                 {
                     sw.WriteHeader<Contacts>();
@@ -185,12 +185,10 @@ namespace AddressBook
         /// <summary>
         /// Read Contact usng CSVReader
         /// </summary>
-        public static void ReadDataUsingCSV()
+        public static void ReadDataUsingCSV(string Filepath)
         {
             try
             {
-                string Filepath = @"D:\Bridgelab\AddressBookSystem\AddressBook\AddressBook\Contacts.csv";
-
                 using (CsvReader sw = new CsvReader(new StreamReader(Filepath), CultureInfo.InvariantCulture))
                 {
                     var Record = sw.GetRecords<Contacts>();
@@ -211,6 +209,45 @@ namespace AddressBook
             catch (FileNotFoundException f)
             {
                 new Exception(f.FileName);
+            }
+        }
+        /// <summary>
+        /// Write data using JSON
+        /// </summary>
+        public static void WriteDataUsingJSON(string filepath)
+        {
+            try
+            {
+                string jsonString = System.Text.Json.JsonSerializer.Serialize(add);
+                File.WriteAllText(filepath, jsonString);
+            }
+            catch (FileNotFoundException f)
+            {
+                new Exception(f.FileName);
+            }
+        }
+        /// <summary>
+        /// Read Data using JSON
+        /// </summary>
+        /// <param name="filePath"></param>
+        public static void ReadJson(string filePath)
+        {
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                var jsonobject = reader.ReadToEnd();
+                add = JsonConvert.DeserializeObject<List<Contacts>>(jsonobject);
+                foreach (Contacts model in add)
+                {
+                    Console.WriteLine("***********Address Book**************");
+                    Console.WriteLine("First Name:" + model.Firstname);
+                    Console.WriteLine("Last Name:" + model.Lastname);
+                    Console.WriteLine("Address:" + model.Address);
+                    Console.WriteLine("City:" + model.City);
+                    Console.WriteLine("State:" + model.State);
+                    Console.WriteLine("Zipcode:" + model.Zipcode);
+                    Console.WriteLine("Pincode:" + model.Pincode);
+                    Console.WriteLine("*********************\n");
+                }
             }
         }
     }
