@@ -1,1 +1,20 @@
-[{"Firstname":"Rajashri","Lastname":"Telvekar","Address":"Kagal","City":"Kolhapur","State":"MH","Zipcode":"767676","Pincode":"676766"},{"Firstname":"Sarika patil","Lastname":"Patil","Address":"Kagal","City":"Kop","State":"MH","Zipcode":"888886","Pincode":"555553"}]
+[
+    {
+        "Firstname": "Rajashri",
+        "Lastname": "Telvekar",
+        "Address": "Kagal",
+        "City": "Kolhapur",
+        "State": "MH",
+        "Zipcode": "767676",
+        "Pincode": "676766"
+    },
+    {
+        "Firstname": "Sarika patil",
+        "Lastname": "Patil",
+        "Address": "Kagal",
+        "City": "Kop",
+        "State": "MH",
+        "Zipcode": "888886",
+        "Pincode": "555553"
+    }
+]
